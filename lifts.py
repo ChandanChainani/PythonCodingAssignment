@@ -11,8 +11,8 @@ DIGIT_WORD_REGEX = re.compile('([0-9]+)([UD])?', re.IGNORECASE)
 def random_lifts():
     lifts = {}
     while len(lifts) < MAX_LIFTS:
-        lifts[str(randint(1, MAX_FLOORS)) + DIRECTIONS[randint(0, 2)]] = 1
-    return list(lifts.keys())
+        lifts[str(randint(1, MAX_FLOORS))] = 1
+    return [i + DIRECTIONS[randint(0, 2)] for i in lifts.keys()]
 
 """
    Counts how many steps it would take for the lift to reach
