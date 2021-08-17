@@ -14,6 +14,10 @@ def random_lifts():
         lifts[str(randint(1, MAX_FLOORS)) + DIRECTIONS[randint(0, 2)]] = 1
     return list(lifts.keys())
 
+"""
+   Counts how many steps it would take for the lift to reach
+   the destination and based on that lift is selected
+"""
 def get_nearest_lift(lifts, user_request):
     u_position, u_direction = DIGIT_WORD_REGEX.search(user_request).groups()
     u_position = int(u_position)
