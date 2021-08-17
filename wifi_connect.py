@@ -73,23 +73,24 @@ def connectWlan(cell, password=None):
 
     return False
 
-try:
-    wlans = findWlans()
-    wlans_count = len(wlans)
+if __name__ == "__main__":
+    try:
+        wlans = findWlans()
+        wlans_count = len(wlans)
 
-    print("> Your available wifi networks are:")
+        print("> Your available wifi networks are:")
 
-    for i in range(0, wlans_count):
-        print("> [%d] %s " %(i + 1, wlans[i].ssid))
+        for i in range(0, wlans_count):
+            print("> [%d] %s " %(i + 1, wlans[i].ssid))
 
-    wlan_selected = int(input("> Your choice? "))
+        wlan_selected = int(input("> Your choice? "))
 
-    if wlan_selected > wlans_count or wlan_selected < 1:
-        print('No wifi with given range')
-        sys.exit(1)
+        if wlan_selected > wlans_count or wlan_selected < 1:
+            print('No wifi with given range')
+            sys.exit(1)
 
-    wlan_password = getpass(prompt="> Password: ")
-    connectWlan(wlans[wlan_selected - 1], wlan_password)
-except Exception as e:
-    print(e)
+        wlan_password = getpass(prompt="> Password: ")
+        connectWlan(wlans[wlan_selected - 1], wlan_password)
+    except Exception as e:
+        print(e)
 

@@ -48,11 +48,13 @@ def get_nearest_lift(lifts, user_request):
 
     return lift_position + 1
 
-lifts = random_lifts()
-print("> lift_position = ", lifts)
+if __name__ == '__main__':
+    lifts = random_lifts()
+    print("> lift_position = ", lifts)
 
-try:
-    user_request = input("> Enter a request? ")
-    print("Lift #{} will be comming up to receive you".format(get_nearest_lift(lifts, user_request)))
-except Exception as e:
-    print("Something went wrong")
+    try:
+        user_request = input("> Enter a request? ")
+        print("Lift #{} will be comming up to receive you".format(get_nearest_lift(lifts, user_request)))
+    except Exception as e:
+        print("Something went wrong")
+
