@@ -89,8 +89,7 @@ try:
         sys.exit(1)
 
     wlan_password = getpass(prompt="> Password: ")
-    print(wlan_selected - 1, wlan_password)
     connectWlan(wlans[wlan_selected - 1], wlan_password)
 except Exception as e:
-    print("Something went wrong")
+    print(e)
 
