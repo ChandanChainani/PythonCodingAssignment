@@ -10,6 +10,9 @@ DIGIT_WORD_REGEX = re.compile('([0-9]+)([UD])?', re.IGNORECASE)
 
 test_cases = [
     [
+        ['0', '1D', '12', '4U', '19D'], '5U', '4U'
+    ],
+    [
         ['2U', '1U', '18', '5U', '19D'], '4D', '18'
     ],
     [
