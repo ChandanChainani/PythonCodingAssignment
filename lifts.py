@@ -39,12 +39,12 @@ def get_nearest_lift(lifts, user_request):
                 if l_position > u_position:
                     distance = abs(distance)
                 elif l_position < u_position:
-                    distance = l_position + u_position + abs(distance)
+                    distance = l_position + u_position
             if l_direction == 'U':
                 if l_position < u_position:
                     distance = abs(distance)
                 elif l_position > u_position:
-                    distance = l_position + u_position + abs(distance)
+                    distance = l_position + u_position
 
 
         if min_distance == None or min_distance < 0 or min_distance > distance:
