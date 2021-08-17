@@ -14,9 +14,10 @@
 - Type in you command line `python city_distance.py` to start the program
   then enter first city latitude and longitude and then
   enter type second city latitude and longitude.
-  for eg: ```
-  City 1: 51.5074 N, 0.1278 W
-  City 2: 48.8566 N, 2.3522 E
+  for eg:
+  ```
+    City 1: 51.5074 N, 0.1278 W
+    City 2: 48.8566 N, 2.3522 E
   ```
 
 ### Assignment 4: Wifi Connect
