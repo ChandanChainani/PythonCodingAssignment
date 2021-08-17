@@ -8,14 +8,14 @@ DIRECTIONS = ['', 'U', 'D']
 
 DIGIT_WORD_REGEX = re.compile('([0-9]+)([UD])?', re.IGNORECASE)
 
-lifts = {}
-while len(lifts) < MAX_LIFTS:
-    lifts[str(randint(1, MAX_FLOORS)) + DIRECTIONS[randint(0, 2)]] = 1
-lifts = list(lifts.keys())
-print("> lift_position = ", lifts)
+def random_lifts():
+    lifts = {}
+    while len(lifts) < MAX_LIFTS:
+        lifts[str(randint(1, MAX_FLOORS)) + DIRECTIONS[randint(0, 2)]] = 1
+    return list(lifts.keys())
 
-try:
-    u_position, u_direction = DIGIT_WORD_REGEX.search(input("> Enter a request? ")).groups()
+def get_nearest_lift(lifts, user_request):
+    u_position, u_direction = DIGIT_WORD_REGEX.search(user_request).groups()
     u_position = int(u_position)
     lift_position = ''
     min_distance = None
@@ -46,6 +46,13 @@ try:
         if min_distance == None or min_distance < 0 or min_distance > distance:
             min_distance, lift_position = distance, lift_index
 
-    print("Lift #{} will be comming up to receive you".format(lift_position + 1))
+    return lift_position + 1
+
+lifts = random_lifts()
+print("> lift_position = ", lifts)
+
+try:
+    user_request = input("> Enter a request? ")
+    print("Lift #{} will be comming up to receive you".format(get_nearest_lift(lifts, user_request)))
 except Exception as e:
     print("Something went wrong")
