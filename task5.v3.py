@@ -10,6 +10,15 @@ DIGIT_WORD_REGEX = re.compile('([0-9]+)([UD])?', re.IGNORECASE)
 
 test_cases = [
     [
+        ['2U', '1U', '18', '5U', '19D'], '4D', '18'
+    ],
+    [
+        ['13', '9', '6U', '18D', '8U'], '1D', '9'
+    ],
+    [
+        ['2D', '17U', '13U', '17', '17D'], '5D', '2D'
+    ],
+    [
         ['5', '8', '19D', '14', '9D'], '4D', '5'
     ],
     [
@@ -52,7 +61,7 @@ test_cases = [
         [ "3", "16D", "5D", "9", "14D" ], "6U", '3'
     ],
     [
-        [ "18", "5D", "7U", "11U", "8U" ], "6D", '18'
+        [ "18", "5D", "7U", "11U", "8U" ], "6D", '5D'
     ],
     [
         [ "2U", "8", "9U", "4", "3" ], "20D", '8'
@@ -102,15 +111,15 @@ for test in test_cases:
                     print('if')
                     distance = abs(distance)
                 elif l_position < u_position:
-                    print('elif')
-                    distance = l_position + u_position + abs(distance)
+                    distance = l_position + u_position # + abs(distance)
+                    print('elif', l_position, u_position, distance)
             if l_direction == 'U':
                 if l_position < u_position:
                     print('if')
                     distance = abs(distance)
                 elif l_position > u_position:
                     print('elif')
-                    distance = l_position + u_position + abs(distance)
+                    distance = l_position + u_position # + abs(distance)
 
 
         print(u_position, l_position, min_distance, distance)
@@ -120,4 +129,5 @@ for test in test_cases:
     print(result == test[2], result, min_distance)
     print()
     if result != test[2]:
+        print('break')
         break
