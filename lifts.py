@@ -26,30 +26,15 @@ def get_nearest_lift(lifts, user_request):
     for lift_index in range(len(lifts)):
         l_position, l_direction = DIGIT_WORD_REGEX.search(lifts[lift_index]).groups()
         l_position = int(l_position)
-        distance = l_position - u_position
-        if l_direction == None:
-            distance = abs(distance)
-        elif l_direction != u_direction:
-            if l_direction == 'D':
-                distance = l_position + u_position
-            elif l_direction == 'U':
-                distance = abs(MAX_FLOORS - l_position) + MAX_FLOORS
-        elif l_direction == u_direction:
-            if l_direction == 'D':
-                if l_position > u_position:
-                    distance = abs(distance)
-                elif l_position < u_position:
-                    distance = l_position + u_position
-            if l_direction == 'U':
-                if l_position < u_position:
-                    distance = abs(distance)
-                elif l_position > u_position:
-                    distance = l_position + u_position
+        distance = abs(l_position - u_position)
 
-
-        if min_distance == None or min_distance < 0 or min_distance > distance:
-            min_distance, lift_position = distance, lift_index
-
+        if l_direction == u_direction or l_direction == None:
+            if l_direction == None and (min_distance == None or distance < min_distance):
+                min_distance, lift_position = distance, lift_index
+            elif u_direction == 'D' and l_position > u_position and (min_distance == None or distance < min_distance):
+                min_distance, lift_position = distance, lift_index
+            elif u_direction == 'U' and u_position > l_position and (min_distance == None or distance < min_distance):
+                min_distance, lift_position = distance, lift_index
     return lift_position + 1
 
 if __name__ == '__main__':
