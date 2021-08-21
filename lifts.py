@@ -29,11 +29,12 @@ def get_nearest_lift(lifts, user_request):
         distance = abs(l_position - u_position)
 
         if l_direction == u_direction or l_direction == None:
-            if l_direction == None and (min_distance == None or distance < min_distance):
+            cond = (min_distance == None or distance < min_distance)
+            if l_direction == None and cond:
                 min_distance, lift_position = distance, lift_index
-            elif u_direction == 'D' and l_position > u_position and (min_distance == None or distance < min_distance):
+            elif u_direction == 'D' and l_position > u_position and cond:
                 min_distance, lift_position = distance, lift_index
-            elif u_direction == 'U' and u_position > l_position and (min_distance == None or distance < min_distance):
+            elif u_direction == 'U' and u_position > l_position and cond:
                 min_distance, lift_position = distance, lift_index
     return lift_position + 1
 
